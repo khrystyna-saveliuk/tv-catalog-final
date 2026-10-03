@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Інформація про серіал</title>
+    <meta
+            name="description"
+            content="Опис серіалу, рейтинг, жанри, акторський склад і список епізодів за сезонами."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти до основного вмісту</a>
+
+<header class="site-header">
+    <a class="logo" href="/">Серіали</a>
+    <nav aria-label="Основна навігація">
+        <ul>
+            <li><a href="/">Головна</a></li>
+            <li><a href="/catalog.html">Каталог</a></li>
+        </ul>
+    </nav>
+    <button type="button" id="theme-toggle" aria-pressed="false">
+        Темна тема
+    </button>
+</header>
+
+<main id="main">
+    <nav aria-label="Навігаційний ланцюжок">
+        <ol class="breadcrumbs">
+            <li><a href="/catalog.html">Каталог</a></li>
+            <li aria-current="page" id="breadcrumb-title">Серіал</li>
+        </ol>
+    </nav>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <article id="show-details" aria-labelledby="show-title" hidden>
+        <h1 id="show-title"></h1>
+        <img id="show-poster" alt="" width="210" height="295" />
+        <button type="button" id="favorite-toggle" aria-pressed="false">
+            Додати в обране
+        </button>
+        <dl id="show-meta"></dl>
+        <div id="show-summary"></div>
+
+        <section aria-labelledby="cast-title">
+            <h2 id="cast-title">Акторський склад</h2>
+            <ul id="cast-list"></ul>
+        </section>
+
+        <section aria-labelledby="episodes-title">
+            <h2 id="episodes-title">Епізоди</h2>
+            <label for="season-select">Сезон</label>
+            <select id="season-select"></select>
+            <ol id="episodes-list"></ol>
+        </section>
+    </article>
+</main>
+
+<footer class="site-footer">
+    <p>Дані надає <a href="https://www.tvmaze.com/api">TVmaze API</a>.</p>
+</footer>
+
+<script type="module" src="/src/pages/show.ts"></script>
+</body>
+</html>

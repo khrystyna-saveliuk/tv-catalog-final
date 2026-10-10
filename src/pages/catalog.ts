@@ -1,1 +1,1 @@
-//Сторінка каталогу
+import '../styles/base.css';

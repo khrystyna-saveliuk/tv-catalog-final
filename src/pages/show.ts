@@ -1,1 +1,1 @@
-//Сторінка деталей
+import '../styles/base.css';

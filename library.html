@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моя бібліотека</title>
+    <meta
+            name="description"
+            content="Ваші особисті списки серіалів: обране, хочу подивитись і переглянуто."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти до основного вмісту</a>
+
+<header class="site-header">
+    <a class="logo" href="/">Серіали</a>
+    <nav aria-label="Основна навігація">
+        <ul>
+            <li><a href="/">Головна</a></li>
+            <li><a href="/library.html" aria-current="page">Моя бібліотека</a></li>
+        </ul>
+    </nav>
+    <button type="button" id="theme-toggle" aria-pressed="false">
+        Темна тема
+    </button>
+</header>
+
+<main id="main">
+    <h1>Моя бібліотека</h1>
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <section aria-labelledby="favorites-title">
+        <h2 id="favorites-title">Обране</h2>
+        <ul id="favorites-list" class="show-grid"></ul>
+    </section>
+
+    <section aria-labelledby="watchlist-title">
+        <h2 id="watchlist-title">Хочу подивитись</h2>
+        <ul id="watchlist-list" class="show-grid"></ul>
+    </section>
+
+    <section aria-labelledby="watched-title">
+        <h2 id="watched-title">Переглянуто</h2>
+        <ul id="watched-list" class="show-grid"></ul>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>Дані надає <a href="https://www.tvmaze.com/api">TVmaze API</a>.</p>
+</footer>
+
+<script type="module" src="/src/pages/library.ts"></script>
+</body>
+</html>

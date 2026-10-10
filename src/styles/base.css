@@ -10,3 +10,16 @@ body {
 a {
     color: var(--color-accent);
 }
+.show-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+}
+
+.show-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

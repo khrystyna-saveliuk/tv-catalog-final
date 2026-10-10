@@ -5,7 +5,7 @@ export default defineConfig({
         rolldownOptions: {
             input: {
                 main: 'index.html',
-                catalog: 'catalog.html',
+                library: 'library.html',
                 show: 'show.html',
             },
         },

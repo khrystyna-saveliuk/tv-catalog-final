@@ -47,14 +47,19 @@
 
         <section aria-labelledby="cast-title">
             <h2 id="cast-title">Акторський склад</h2>
-            <ul id="cast-list"></ul>
+            <div id="cast-status" role="status" aria-live="polite"></div>
+            <ul id="cast-list" class="cast-grid"></ul>
+            <button type="button" id="cast-more" hidden>Показати всіх</button>
         </section>
 
         <section aria-labelledby="episodes-title">
             <h2 id="episodes-title">Епізоди</h2>
-            <label for="season-select">Сезон</label>
-            <select id="season-select"></select>
-            <ol id="episodes-list"></ol>
+            <div id="episodes-status" role="status" aria-live="polite"></div>
+            <div id="season-controls" hidden>
+                <label for="season-select">Сезон</label>
+                <select id="season-select"></select>
+            </div>
+            <ol id="episodes-list" class="episode-list"></ol>
         </section>
     </article>
 </main>

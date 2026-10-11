@@ -65,3 +65,64 @@ a {
     align-items: center;
     gap: var(--space-2);
 }
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+}
+
+#show-meta div {
+    display: flex;
+    gap: var(--space-2);
+}
+
+#show-meta dt {
+    color: var(--color-text-muted);
+}
+
+#show-meta dd {
+    margin: 0;
+}
+
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-3);
+    list-style: none;
+    padding: 0;
+}
+
+.cast-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cast-item__name,
+.episode__title {
+    margin: var(--space-1) 0 0;
+    font-weight: 600;
+}
+
+.cast-item__character,
+.episode__meta {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.episode-list {
+    list-style: none;
+    padding: 0;
+}
+
+.episode {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.episode__meta {
+    display: flex;
+    gap: var(--space-3);
+}

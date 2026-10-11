@@ -41,3 +41,11 @@ export function clearCheckedValues(container: HTMLElement): void {
             input.checked = false;
         });
 }
+
+export function setCheckedValues(container: HTMLElement, values: string[]): void {
+    container
+        .querySelectorAll<HTMLInputElement>('input[type="checkbox"]')
+        .forEach((input) => {
+            input.checked = values.includes(input.value);
+        });
+}

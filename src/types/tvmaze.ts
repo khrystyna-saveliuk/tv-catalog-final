@@ -40,3 +40,8 @@ export interface Episode {
     runtime: number | null;
     summary: string | null;
 }
+
+export type ShowCardData = Pick<
+    Show,
+    'id' | 'name' | 'genres' | 'premiered' | 'rating' | 'image'
+>;

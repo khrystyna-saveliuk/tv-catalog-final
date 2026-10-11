@@ -1,6 +1,6 @@
-import type { Show } from '../types/tvmaze';
+import type { ShowCardData } from '../types/tvmaze';
 
-export function createShowCard(show: Show): HTMLLIElement {
+export function createShowCard(show: ShowCardData): HTMLLIElement {
     const item = document.createElement('li');
     item.className = 'show-card';
 

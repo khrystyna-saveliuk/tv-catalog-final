@@ -39,9 +39,26 @@
     <article id="show-details" aria-labelledby="show-title" hidden>
         <h1 id="show-title"></h1>
         <img id="show-poster" alt="" width="210" height="295" />
-        <button type="button" id="favorite-toggle" aria-pressed="false">
-            Додати в обране
-        </button>
+        <div class="library-actions" role="group" aria-label="Моя бібліотека">
+            <button type="button" id="want-toggle">
+                Додати до «Хочу подивитись»
+            </button>
+            <button type="button" id="watched-toggle">
+                Додати до «Переглянуто»
+            </button>
+            <button
+                    type="button"
+                    id="favorite-toggle"
+                    aria-describedby="favorite-hint"
+                    disabled
+            >
+                Додати до улюбленого
+            </button>
+        </div>
+        <p id="favorite-hint" class="library-hint">
+            Щоб додати до улюбленого, спочатку позначте серіал переглянутим.
+        </p>
+        <p id="library-message" role="status"></p>
         <dl id="show-meta"></dl>
         <div id="show-summary"></div>
 

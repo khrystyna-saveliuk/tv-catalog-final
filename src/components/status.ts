@@ -23,3 +23,7 @@ export function showError(
 export function clearStatus(container: HTMLElement): void {
     container.replaceChildren();
 }
+
+export function showMessage(container: HTMLElement, message: string): void {
+    container.replaceChildren(message);
+}

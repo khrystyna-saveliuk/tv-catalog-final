@@ -36,6 +36,14 @@ export function createShowCard(show: Show): HTMLLIElement {
     }
     meta.append(rating);
 
+    const year = show.premiered?.slice(0, 4);
+    if (year) {
+        const yearElement = document.createElement('span');
+        yearElement.className = 'show-card__year';
+        yearElement.textContent = year;
+        meta.append(yearElement);
+    }
+
     const genres = show.genres.slice(0, 2).join(', ');
     if (genres) {
         const genresElement = document.createElement('span');

@@ -54,10 +54,6 @@ export function getEpisodes(id: number, signal?: AbortSignal): Promise<Episode[]
     return request<Episode[]>(`/shows/${id}/episodes`, signal);
 }
 
-export async function getFeaturedShows(signal?: AbortSignal): Promise<Show[]> {
-    const shows = await request<Show[]>('/shows?page=0', signal);
-    return shows
-        .filter((show) => show.rating.average !== null)
-        .sort((a, b) => (b.rating.average ?? 0) - (a.rating.average ?? 0))
-        .slice(0, 12);
+export function getShowsPage(page = 0, signal?: AbortSignal): Promise<Show[]> {
+    return request<Show[]>(`/shows?page=${page}`, signal);
 }

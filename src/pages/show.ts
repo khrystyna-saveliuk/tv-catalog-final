@@ -1,4 +1,3 @@
-import '../styles/base.css';
 import { ApiError, getCast, getEpisodes, getShow } from '../api/tvmaze';
 import { createCastItem } from '../components/castItem';
 import { createEpisodeItem } from '../components/episodeItem';
@@ -28,7 +27,6 @@ const CAST_PREVIEW = 6;
 const statusElement = getElement<HTMLElement>('status');
 const details = getElement<HTMLElement>('show-details');
 const titleElement = getElement<HTMLHeadingElement>('show-title');
-const breadcrumbTitle = getElement<HTMLElement>('breadcrumb-title');
 const poster = getElement<HTMLImageElement>('show-poster');
 const metaList = getElement<HTMLElement>('show-meta');
 const summaryElement = getElement<HTMLElement>('show-summary');
@@ -105,7 +103,6 @@ function renderShow(show: Show): void {
     currentShow = show;
     document.title = `${show.name} — Серіали`;
     titleElement.textContent = show.name;
-    breadcrumbTitle.textContent = show.name;
 
     if (show.image) {
         poster.src = show.image.medium;

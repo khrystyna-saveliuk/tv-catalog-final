@@ -1,4 +1,3 @@
-import '../styles/base.css';
 import { createShowCard } from '../components/showCard';
 import type { SavedShow } from '../types/library';
 import { getElement } from '../utils/dom';

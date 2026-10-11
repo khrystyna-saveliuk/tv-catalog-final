@@ -1,4 +1,3 @@
-import '../styles/base.css';
 import { ApiError, getShowsPage, searchShows } from '../api/tvmaze';
 import {
     clearCheckedValues,
@@ -33,6 +32,8 @@ const genreOptions = getElement<HTMLElement>('genre-options');
 const decadeOptions = getElement<HTMLElement>('decade-options');
 const sortSelect = getElement<HTMLSelectElement>('sort-select');
 const resetButton = getElement<HTMLButtonElement>('reset-filters');
+const genreCount = getElement<HTMLElement>('genre-count');
+const decadeCount = getElement<HTMLElement>('decade-count');
 const statusElement = getElement<HTMLElement>('status');
 const listElement = getElement<HTMLUListElement>('results-list');
 const moreButton = getElement<HTMLButtonElement>('show-more');
@@ -99,6 +100,8 @@ function renderList(): void {
     const sortKey = isSortKey(sortSelect.value) ? sortSelect.value : 'rating';
     const genres = getCheckedValues(genreOptions);
     const decades = getCheckedValues(decadeOptions).map(Number);
+    genreCount.textContent = genres.length > 0 ? `(${genres.length})` : '';
+    decadeCount.textContent = decades.length > 0 ? `(${decades.length})` : '';
 
     const filtered = filterByDecades(filterByGenres(allShows, genres), decades);
     const sorted = sortShows(filtered, sortKey);

@@ -1,5 +1,7 @@
 @import '@fontsource-variable/onest';
 @import './tokens.css';
+@import './layout.css';
+@import './components.css';
 
 *,
 *::before,
@@ -51,19 +53,7 @@ a:hover {
     outline: 3px solid var(--color-focus);
     outline-offset: 2px;
 }
-.show-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: var(--space-4);
-    list-style: none;
-    padding: 0;
-}
 
-.show-card img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -73,45 +63,6 @@ a:hover {
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
-}
-
-.show-card__meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1) var(--space-2);
-    margin: var(--space-1) 0 0;
-}
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-    align-items: flex-start;
-}
-
-.filter-group fieldset {
-    border: 0;
-    margin: 0;
-    padding: var(--space-2) 0;
-}
-
-.checkbox-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2) var(--space-3);
-    max-width: 40rem;
-}
-
-.checkbox {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-}
-.breadcrumbs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    list-style: none;
-    padding: 0;
 }
 
 #show-meta div {
@@ -177,4 +128,34 @@ a:hover {
 .library-hint {
     margin: 0 0 var(--space-3);
     color: var(--color-text-muted);
+}
+
+button {
+    min-height: 2.5rem;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+button:disabled {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+img {
+    max-width: 100%;
+    border-radius: var(--radius);
+}
+
+[hidden] {
+    display: none !important;
 }

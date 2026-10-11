@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+main {
+    flex: 1;
+    padding-block: var(--space-4) var(--space-5);
+}
+
+.site-header,
+main,
+.site-footer {
+    padding-inline: max(var(--space-3), calc((100% - var(--container)) / 2));
+}
+
+
+.skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: 10;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.site-header a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.site-header a:hover {
+    color: var(--color-accent);
+}
+
+.logo {
+    font-size: var(--text-lg);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: 0.55em;
+    height: 0.55em;
+    margin-right: 0.45em;
+    border-radius: 50%;
+    background: var(--color-accent);
+}
+
+.site-header ul {
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-header nav a {
+    padding-block: var(--space-1);
+    font-weight: 500;
+}
+
+.site-header [aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.4em;
+}
+
+.site-header button {
+    margin-inline-start: auto;
+}
+
+.site-footer {
+    margin-top: var(--space-5);
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+.site-header {
+    view-transition-name: site-header;
+}

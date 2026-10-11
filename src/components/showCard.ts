@@ -1,4 +1,5 @@
 import type { ShowCardData } from '../types/tvmaze';
+import { createIcon } from './icons';
 
 export function createShowCard(show: ShowCardData): HTMLLIElement {
     const item = document.createElement('li');
@@ -15,14 +16,19 @@ export function createShowCard(show: ShowCardData): HTMLLIElement {
         poster.height = 295;
         poster.loading = 'lazy';
         link.append(poster);
+    } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'poster-placeholder';
+        placeholder.setAttribute('aria-hidden', 'true');
+        link.append(placeholder);
     }
 
     const title = document.createElement('h3');
     title.textContent = show.name;
     link.append(title);
 
-    const meta = document.createElement('p');
-    meta.className = 'show-card__meta';
+    const stats = document.createElement('p');
+    stats.className = 'show-card__stats';
 
     const rating = document.createElement('span');
     rating.className = 'show-card__rating';
@@ -30,23 +36,27 @@ export function createShowCard(show: ShowCardData): HTMLLIElement {
         const label = document.createElement('span');
         label.className = 'visually-hidden';
         label.textContent = 'Рейтинг: ';
-        rating.append(label, String(show.rating.average));
+        rating.append(createIcon('star'), label, show.rating.average.toFixed(1));
     } else {
         rating.textContent = 'Без рейтингу';
     }
-    meta.append(rating);
+    stats.append(rating);
 
     const year = show.premiered?.slice(0, 4);
     if (year) {
         const yearElement = document.createElement('span');
-        yearElement.className = 'show-card__year';
         yearElement.textContent = year;
-        meta.append(yearElement);
+        stats.append(yearElement);
     }
+
+    const meta = document.createElement('div');
+    meta.className = 'show-card__meta';
+    meta.append(stats);
 
     const genres = show.genres.slice(0, 2).join(', ');
     if (genres) {
-        const genresElement = document.createElement('span');
+        const genresElement = document.createElement('p');
+        genresElement.className = 'show-card__genres';
         genresElement.textContent = genres;
         meta.append(genresElement);
     }

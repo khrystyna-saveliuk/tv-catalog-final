@@ -46,7 +46,9 @@
 
     --radius-sm: 4px;
     --radius: 8px;
+    --radius-lg: 16px;
     --container: 72rem;
+    --color-accent-soft: color-mix(in srgb, var(--color-accent) 18%, transparent);
 }
 
 [data-theme='dark'] {

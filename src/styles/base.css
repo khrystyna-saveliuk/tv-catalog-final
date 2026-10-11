@@ -1,14 +1,55 @@
+@import '@fontsource-variable/onest';
 @import './tokens.css';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     margin: 0;
     font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
     background: var(--color-bg);
     color: var(--color-text);
 }
 
+h1,
+h2,
+h3 {
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: var(--text-2xl);
+}
+
+h2 {
+    font-size: var(--text-xl);
+}
+
+h3 {
+    font-size: var(--text-lg);
+}
+
 a {
     color: var(--color-accent);
+}
+
+a:hover {
+    color: var(--color-accent-hover);
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
 }
 .show-grid {
     display: grid;

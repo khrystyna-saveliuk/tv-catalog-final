@@ -38,7 +38,9 @@ function isSavedShow(value: unknown): value is SavedShow {
     return hasBasics && hasShowData && hasLibraryData;
 }
 
-export function loadLibrary(storage: StorageLike | null = getStorage()): SavedShow[] {
+export function loadLibrary(
+    storage: StorageLike | null = getStorage(),
+): SavedShow[] {
     if (!storage) return [];
     try {
         const raw = storage.getItem(STORAGE_KEY);
@@ -63,7 +65,10 @@ export function saveLibrary(
     }
 }
 
-export function findShow(library: SavedShow[], id: number): SavedShow | undefined {
+export function findShow(
+    library: SavedShow[],
+    id: number,
+): SavedShow | undefined {
     return library.find((item) => item.id === id);
 }
 
@@ -99,7 +104,9 @@ export function toggleList(
 
 export function toggleFavorite(library: SavedShow[], id: number): SavedShow[] {
     return library.map((item) =>
-        item.id === id && item.watched ? { ...item, favorite: !item.favorite } : item,
+        item.id === id && item.watched
+            ? { ...item, favorite: !item.favorite }
+            : item,
     );
 }
 

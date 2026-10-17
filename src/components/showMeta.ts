@@ -23,7 +23,9 @@ export function createMetaItems(show: Show): HTMLDivElement[] {
     items.push(
         createItem(
             'Рейтинг',
-            show.rating.average !== null ? String(show.rating.average) : 'Без рейтингу',
+            show.rating.average !== null
+                ? String(show.rating.average)
+                : 'Без рейтингу',
         ),
     );
     items.push(createItem('Статус', STATUS_LABELS[show.status] ?? show.status));

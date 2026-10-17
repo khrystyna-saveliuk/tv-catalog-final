@@ -23,8 +23,8 @@
     border-radius: var(--radius-lg);
     background: var(--color-surface);
     transition:
-            border-color 0.15s,
-            box-shadow 0.15s;
+        border-color 0.15s,
+        box-shadow 0.15s;
 }
 
 .show-card:hover,
@@ -267,7 +267,6 @@ input::placeholder {
     font-size: var(--text-sm);
 }
 
-
 .checkbox-list {
     display: flex;
     flex-wrap: wrap;
@@ -300,8 +299,8 @@ input::placeholder {
     background: var(--color-surface);
     font-size: var(--text-sm);
     transition:
-            border-color 0.15s,
-            background-color 0.15s;
+        border-color 0.15s,
+        background-color 0.15s;
 }
 
 .checkbox:hover span {
@@ -313,7 +312,6 @@ input::placeholder {
     background: var(--color-accent);
     color: var(--color-on-accent);
 }
-
 
 .checkbox input:checked + span::before {
     content: '';

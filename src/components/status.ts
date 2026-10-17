@@ -1,4 +1,7 @@
-export function showLoading(container: HTMLElement, message = 'Завантаження…'): void {
+export function showLoading(
+    container: HTMLElement,
+    message = 'Завантаження…',
+): void {
     container.replaceChildren(message);
 }
 

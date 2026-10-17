@@ -54,7 +54,9 @@ describe('filterByGenres', () => {
     });
 
     it('кілька жанрів: повертає лише серіали з усіма обраними', () => {
-        expect(filterByGenres(shows, ['Drama', 'Comedy'])).toEqual([dramaComedy]);
+        expect(filterByGenres(shows, ['Drama', 'Comedy'])).toEqual([
+            dramaComedy,
+        ]);
     });
 });
 
@@ -102,8 +104,16 @@ describe('filterByDecades', () => {
 });
 
 describe('sortShows', () => {
-    const a = makeShow({ id: 1, rating: { average: 7 }, premiered: '2010-01-01' });
-    const b = makeShow({ id: 2, rating: { average: 9 }, premiered: '2020-01-01' });
+    const a = makeShow({
+        id: 1,
+        rating: { average: 7 },
+        premiered: '2010-01-01',
+    });
+    const b = makeShow({
+        id: 2,
+        rating: { average: 9 },
+        premiered: '2020-01-01',
+    });
     const c = makeShow({ id: 3, rating: { average: null }, premiered: null });
     const shows = [a, c, b];
 

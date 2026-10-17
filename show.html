@@ -1,84 +1,101 @@
 <!doctype html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Інформація про серіал</title>
-    <meta
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Інформація про серіал</title>
+        <meta
             name="description"
             content="Опис серіалу, рейтинг, жанри, акторський склад і список епізодів за сезонами."
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/src/styles/base.css" />
-</head>
-<body>
-<a class="skip-link" href="#main">Перейти до основного вмісту</a>
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="/src/styles/base.css" />
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Перейти до основного вмісту</a>
 
-<header class="site-header">
-    <a class="logo" href="/">Серіали</a>
-    <nav aria-label="Основна навігація">
-        <ul>
-            <li><a href="/">Головна</a></li>
-            <li><a href="/library.html">Моя бібліотека</a></li>
-        </ul>
-    </nav>
-    <button type="button" id="theme-toggle" aria-pressed="false">
-        Темна тема
-    </button>
-</header>
-
-<main id="main">
-    <div id="status" role="status" aria-live="polite"></div>
-
-    <article id="show-details" aria-labelledby="show-title" hidden>
-        <h1 id="show-title"></h1>
-        <img id="show-poster" alt="" width="210" height="295" />
-        <div class="library-actions" role="group" aria-label="Моя бібліотека">
-            <button type="button" id="want-toggle">
-                Додати до «Хочу подивитись»
+        <header class="site-header">
+            <a class="logo" href="/">Серіали</a>
+            <nav aria-label="Основна навігація">
+                <ul>
+                    <li><a href="/">Головна</a></li>
+                    <li><a href="/library.html">Моя бібліотека</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme-toggle" aria-pressed="false">
+                Темна тема
             </button>
-            <button type="button" id="watched-toggle">
-                Додати до «Переглянуто»
-            </button>
-            <button
-                    type="button"
-                    id="favorite-toggle"
-                    aria-describedby="favorite-hint"
-                    disabled
-            >
-                Додати до улюбленого
-            </button>
-        </div>
-        <p id="favorite-hint" class="library-hint">
-            Щоб додати до улюбленого, спочатку позначте серіал переглянутим.
-        </p>
-        <p id="library-message" role="status"></p>
-        <dl id="show-meta"></dl>
-        <div id="show-summary"></div>
+        </header>
 
-        <section aria-labelledby="cast-title">
-            <h2 id="cast-title">Акторський склад</h2>
-            <div id="cast-status" role="status" aria-live="polite"></div>
-            <ul id="cast-list" class="cast-grid"></ul>
-            <button type="button" id="cast-more" hidden>Показати всіх</button>
-        </section>
+        <main id="main">
+            <div id="status" role="status" aria-live="polite"></div>
 
-        <section aria-labelledby="episodes-title">
-            <h2 id="episodes-title">Епізоди</h2>
-            <div id="episodes-status" role="status" aria-live="polite"></div>
-            <div id="season-controls" hidden>
-                <label for="season-select">Сезон</label>
-                <select id="season-select"></select>
-            </div>
-            <ol id="episodes-list" class="episode-list"></ol>
-        </section>
-    </article>
-</main>
+            <article id="show-details" aria-labelledby="show-title" hidden>
+                <h1 id="show-title"></h1>
+                <img id="show-poster" alt="" width="210" height="295" />
+                <div
+                    class="library-actions"
+                    role="group"
+                    aria-label="Моя бібліотека"
+                >
+                    <button type="button" id="want-toggle">
+                        Додати до «Хочу подивитись»
+                    </button>
+                    <button type="button" id="watched-toggle">
+                        Додати до «Переглянуто»
+                    </button>
+                    <button
+                        type="button"
+                        id="favorite-toggle"
+                        aria-describedby="favorite-hint"
+                        disabled
+                    >
+                        Додати до улюбленого
+                    </button>
+                </div>
+                <p id="favorite-hint" class="library-hint">
+                    Щоб додати до улюбленого, спочатку позначте серіал
+                    переглянутим.
+                </p>
+                <p id="library-message" role="status"></p>
+                <dl id="show-meta"></dl>
+                <div id="show-summary"></div>
 
-<footer class="site-footer">
-    <p>Дані надає <a href="https://www.tvmaze.com/api">TVmaze API</a>.</p>
-</footer>
+                <section aria-labelledby="cast-title">
+                    <h2 id="cast-title">Акторський склад</h2>
+                    <div
+                        id="cast-status"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+                    <ul id="cast-list" class="cast-grid"></ul>
+                    <button type="button" id="cast-more" hidden>
+                        Показати всіх
+                    </button>
+                </section>
 
-<script type="module" src="/src/pages/show.ts"></script>
-</body>
+                <section aria-labelledby="episodes-title">
+                    <h2 id="episodes-title">Епізоди</h2>
+                    <div
+                        id="episodes-status"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+                    <div id="season-controls" hidden>
+                        <label for="season-select">Сезон</label>
+                        <select id="season-select"></select>
+                    </div>
+                    <ol id="episodes-list" class="episode-list"></ol>
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <p>
+                Дані надає <a href="https://www.tvmaze.com/api">TVmaze API</a>.
+            </p>
+        </footer>
+
+        <script type="module" src="/src/pages/show.ts"></script>
+    </body>
 </html>

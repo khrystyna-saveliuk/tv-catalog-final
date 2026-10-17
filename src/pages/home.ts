@@ -43,7 +43,9 @@ let visibleCount = HOME_PAGE_SIZE;
 let controller: AbortController | null = null;
 
 function isStringArray(value: unknown): value is string[] {
-    return Array.isArray(value) && value.every((item) => typeof item === 'string');
+    return (
+        Array.isArray(value) && value.every((item) => typeof item === 'string')
+    );
 }
 
 function readState(): PageState | null {
@@ -116,7 +118,10 @@ function renderList(): void {
             'Нічого не знайдено. Спробуйте інший запит або зніміть фільтри.',
         );
     } else {
-        showMessage(statusElement, `Показано ${visible.length} з ${sorted.length}`);
+        showMessage(
+            statusElement,
+            `Показано ${visible.length} з ${sorted.length}`,
+        );
     }
 
     saveState();
@@ -153,15 +158,22 @@ async function load(query: string, saved: PageState | null): Promise<void> {
 
         renderList();
     } catch (error) {
-        if (error instanceof DOMException && error.name === 'AbortError') return;
+        if (error instanceof DOMException && error.name === 'AbortError')
+            return;
         const message =
-            error instanceof ApiError ? error.message : 'Сталася невідома помилка.';
+            error instanceof ApiError
+                ? error.message
+                : 'Сталася невідома помилка.';
         showError(statusElement, message, () => void load(query, saved));
     }
 }
 
 function search(query: string): void {
-    window.history.pushState(null, '', query ? `/?q=${encodeURIComponent(query)}` : '/');
+    window.history.pushState(
+        null,
+        '',
+        query ? `/?q=${encodeURIComponent(query)}` : '/',
+    );
     void load(query, null);
 }
 
@@ -193,7 +205,6 @@ moreButton.addEventListener('click', () => {
     renderList();
     listElement.querySelectorAll('a')[previousCount]?.focus();
 });
-
 window.addEventListener('popstate', () => {
     const query = getQueryFromUrl();
     input.value = query;

@@ -15,7 +15,6 @@ main,
     padding-inline: max(var(--space-3), calc((100% - var(--container)) / 2));
 }
 
-
 .skip-link {
     position: absolute;
     top: var(--space-2);
@@ -33,7 +32,6 @@ main,
 .skip-link:focus {
     transform: translateY(0);
 }
-
 
 .site-header {
     display: flex;

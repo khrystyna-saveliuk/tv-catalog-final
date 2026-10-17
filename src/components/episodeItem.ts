@@ -14,7 +14,9 @@ export function createEpisodeItem(episode: Episode): HTMLLIElement {
     const title = document.createElement('p');
     title.className = 'episode__title';
     title.textContent =
-        episode.number !== null ? `${episode.number}. ${episode.name}` : episode.name;
+        episode.number !== null
+            ? `${episode.number}. ${episode.name}`
+            : episode.name;
     item.append(title);
 
     const meta = document.createElement('p');

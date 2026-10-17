@@ -20,13 +20,19 @@ async function request<T>(path: string, signal?: AbortSignal): Promise<T> {
         if (error instanceof DOMException && error.name === 'AbortError') {
             throw error;
         }
-        throw new ApiError('Не вдалося з’єднатися з сервером. Перевірте інтернет.');
+        throw new ApiError(
+            'Не вдалося з’єднатися з сервером. Перевірте інтернет.',
+        );
     }
 
     if (!response.ok) {
-        if (response.status === 404) throw new ApiError('Нічого не знайдено.', 404);
+        if (response.status === 404)
+            throw new ApiError('Нічого не знайдено.', 404);
         if (response.status === 429) {
-            throw new ApiError('Забагато запитів. Спробуйте за кілька секунд.', 429);
+            throw new ApiError(
+                'Забагато запитів. Спробуйте за кілька секунд.',
+                429,
+            );
         }
         throw new ApiError('Сервер повернув помилку.', response.status);
     }
@@ -34,7 +40,10 @@ async function request<T>(path: string, signal?: AbortSignal): Promise<T> {
     return (await response.json()) as T;
 }
 
-export async function searchShows(query: string, signal?: AbortSignal): Promise<Show[]> {
+export async function searchShows(
+    query: string,
+    signal?: AbortSignal,
+): Promise<Show[]> {
     const results = await request<SearchResult[]>(
         `/search/shows?q=${encodeURIComponent(query)}`,
         signal,
@@ -46,11 +55,17 @@ export function getShow(id: number, signal?: AbortSignal): Promise<Show> {
     return request<Show>(`/shows/${id}`, signal);
 }
 
-export function getCast(id: number, signal?: AbortSignal): Promise<CastMember[]> {
+export function getCast(
+    id: number,
+    signal?: AbortSignal,
+): Promise<CastMember[]> {
     return request<CastMember[]>(`/shows/${id}/cast`, signal);
 }
 
-export function getEpisodes(id: number, signal?: AbortSignal): Promise<Episode[]> {
+export function getEpisodes(
+    id: number,
+    signal?: AbortSignal,
+): Promise<Episode[]> {
     return request<Episode[]>(`/shows/${id}/episodes`, signal);
 }
 

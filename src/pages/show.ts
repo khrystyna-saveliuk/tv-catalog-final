@@ -53,7 +53,9 @@ let castExpanded = false;
 let seasons = new Map<number, Episode[]>();
 
 function errorMessage(error: unknown): string {
-    return error instanceof ApiError ? error.message : 'Сталася невідома помилка.';
+    return error instanceof ApiError
+        ? error.message
+        : 'Сталася невідома помилка.';
 }
 
 const LIST_NAMES: Record<ListKey, string> = {
@@ -91,7 +93,8 @@ function changeList(list: ListKey): void {
     if (!currentShow) return;
     const saved = findShow(library, currentShow.id);
     const wasIn = saved?.[list] === true;
-    const losesFavorite = list === 'watched' && wasIn && saved?.favorite === true;
+    const losesFavorite =
+        list === 'watched' && wasIn && saved?.favorite === true;
 
     let message = `${wasIn ? 'Прибрано з' : 'Додано до'} «${LIST_NAMES[list]}».`;
     if (losesFavorite) message += ' Серіал також прибрано з улюбленого.';
@@ -142,7 +145,10 @@ function renderCast(): void {
 function renderSeason(season: number): void {
     const episodes = seasons.get(season) ?? [];
     episodesList.replaceChildren(...episodes.map(createEpisodeItem));
-    showMessage(episodesStatus, `Сезон ${season}, епізодів: ${episodes.length}`);
+    showMessage(
+        episodesStatus,
+        `Сезон ${season}, епізодів: ${episodes.length}`,
+    );
 }
 
 async function loadCast(id: number): Promise<void> {
@@ -154,7 +160,10 @@ async function loadCast(id: number): Promise<void> {
     try {
         cast = await getCast(id);
         if (cast.length === 0) {
-            showMessage(castStatus, 'Інформація про акторський склад відсутня.');
+            showMessage(
+                castStatus,
+                'Інформація про акторський склад відсутня.',
+            );
             return;
         }
         clearStatus(castStatus);
@@ -179,12 +188,18 @@ async function loadEpisodes(id: number): Promise<void> {
         }
 
         seasonSelect.replaceChildren(
-            ...[...seasons.keys()].map((n) => new Option(`Сезон ${n}`, String(n))),
+            ...[...seasons.keys()].map(
+                (n) => new Option(`Сезон ${n}`, String(n)),
+            ),
         );
         seasonControls.hidden = false;
         renderSeason(Number(seasonSelect.value));
     } catch (error) {
-        showError(episodesStatus, errorMessage(error), () => void loadEpisodes(id));
+        showError(
+            episodesStatus,
+            errorMessage(error),
+            () => void loadEpisodes(id),
+        );
     }
 }
 

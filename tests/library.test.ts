@@ -128,7 +128,12 @@ describe('loadLibrary і saveLibrary', () => {
     });
 
     it('відкидає записи старого формату', () => {
-        const old = { ...makeCard(1), status: 'want', favorite: false, addedAt: 1 };
+        const old = {
+            ...makeCard(1),
+            status: 'want',
+            favorite: false,
+            addedAt: 1,
+        };
         expect(loadLibrary(fakeStorage(JSON.stringify([old])))).toEqual([]);
     });
 

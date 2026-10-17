@@ -36,7 +36,11 @@ export function createShowCard(show: ShowCardData): HTMLLIElement {
         const label = document.createElement('span');
         label.className = 'visually-hidden';
         label.textContent = 'Рейтинг: ';
-        rating.append(createIcon('star'), label, show.rating.average.toFixed(1));
+        rating.append(
+            createIcon('star'),
+            label,
+            show.rating.average.toFixed(1),
+        );
     } else {
         rating.textContent = 'Без рейтингу';
     }

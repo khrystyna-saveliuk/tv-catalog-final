@@ -29,7 +29,9 @@ export function renderCheckboxGroup(
 
 export function getCheckedValues(container: HTMLElement): string[] {
     return Array.from(
-        container.querySelectorAll<HTMLInputElement>('input[type="checkbox"]:checked'),
+        container.querySelectorAll<HTMLInputElement>(
+            'input[type="checkbox"]:checked',
+        ),
         (input) => input.value,
     );
 }
@@ -42,7 +44,10 @@ export function clearCheckedValues(container: HTMLElement): void {
         });
 }
 
-export function setCheckedValues(container: HTMLElement, values: string[]): void {
+export function setCheckedValues(
+    container: HTMLElement,
+    values: string[],
+): void {
     container
         .querySelectorAll<HTMLInputElement>('input[type="checkbox"]')
         .forEach((input) => {

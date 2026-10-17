@@ -4,7 +4,6 @@ import { getElement } from '../utils/dom';
 import { listBy, listFavorites, loadLibrary } from '../utils/library';
 import { LIBRARY_PAGE_SIZE } from '../config';
 
-
 function setupSection(id: string, items: SavedShow[], emptyText: string): void {
     const list = getElement<HTMLUListElement>(`${id}-list`);
     const empty = getElement<HTMLElement>(`${id}-empty`);
@@ -12,7 +11,9 @@ function setupSection(id: string, items: SavedShow[], emptyText: string): void {
     let visibleCount = LIBRARY_PAGE_SIZE;
 
     function render(): void {
-        list.replaceChildren(...items.slice(0, visibleCount).map(createShowCard));
+        list.replaceChildren(
+            ...items.slice(0, visibleCount).map(createShowCard),
+        );
         empty.textContent = items.length === 0 ? emptyText : '';
         empty.hidden = items.length > 0;
         more.hidden = visibleCount >= items.length;

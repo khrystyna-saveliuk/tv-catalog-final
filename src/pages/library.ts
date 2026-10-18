@@ -1,9 +1,9 @@
 import { createShowCard } from '../components/showCard';
+import { initThemeToggle } from '../components/themeToggle';
+import { LIBRARY_PAGE_SIZE } from '../config';
 import type { SavedShow } from '../types/library';
 import { getElement } from '../utils/dom';
 import { listBy, listFavorites, loadLibrary } from '../utils/library';
-import { LIBRARY_PAGE_SIZE } from '../config';
-import { initThemeToggle } from '../components/themeToggle';
 
 initThemeToggle();
 

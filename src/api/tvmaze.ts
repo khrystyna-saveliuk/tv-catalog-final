@@ -12,12 +12,22 @@ export class ApiError extends Error {
     }
 }
 
+export function isAbortError(error: unknown): boolean {
+    return error instanceof DOMException && error.name === 'AbortError';
+}
+
+export function getErrorMessage(error: unknown): string {
+    return error instanceof ApiError
+        ? error.message
+        : 'Сталася невідома помилка.';
+}
+
 async function request<T>(path: string, signal?: AbortSignal): Promise<T> {
     let response: Response;
     try {
         response = await fetch(`${BASE_URL}${path}`, { signal });
     } catch (error) {
-        if (error instanceof DOMException && error.name === 'AbortError') {
+        if (isAbortError(error)) {
             throw error;
         }
         throw new ApiError(

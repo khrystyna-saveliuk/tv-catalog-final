@@ -1,4 +1,9 @@
-import { ApiError, getShowsPage, searchShows } from '../api/tvmaze';
+import {
+    getErrorMessage,
+    getShowsPage,
+    isAbortError,
+    searchShows,
+} from '../api/tvmaze';
 import {
     clearCheckedValues,
     getCheckedValues,
@@ -7,6 +12,7 @@ import {
 } from '../components/checkboxGroup';
 import { createShowCard } from '../components/showCard';
 import { showError, showLoading, showMessage } from '../components/status';
+import { initThemeToggle } from '../components/themeToggle';
 import { HOME_PAGE_SIZE } from '../config';
 import type { Show } from '../types/tvmaze';
 import { getElement } from '../utils/dom';
@@ -18,7 +24,6 @@ import {
     isSortKey,
     sortShows,
 } from '../utils/filters';
-import { initThemeToggle } from '../components/themeToggle';
 
 initThemeToggle();
 
@@ -161,13 +166,12 @@ async function load(query: string, saved: PageState | null): Promise<void> {
 
         renderList();
     } catch (error) {
-        if (error instanceof DOMException && error.name === 'AbortError')
-            return;
-        const message =
-            error instanceof ApiError
-                ? error.message
-                : 'Сталася невідома помилка.';
-        showError(statusElement, message, () => void load(query, saved));
+        if (isAbortError(error)) return;
+        showError(
+            statusElement,
+            getErrorMessage(error),
+            () => void load(query, saved),
+        );
     }
 }
 
@@ -208,6 +212,7 @@ moreButton.addEventListener('click', () => {
     renderList();
     listElement.querySelectorAll('a')[previousCount]?.focus();
 });
+
 window.addEventListener('popstate', () => {
     const query = getQueryFromUrl();
     input.value = query;

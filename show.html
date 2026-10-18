@@ -9,6 +9,18 @@
             content="Опис серіалу, рейтинг, жанри, акторський склад і список епізодів за сезонами."
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <script>
+            try {
+                var stored = localStorage.getItem('tv-catalog:theme');
+                var theme =
+                    stored === 'light' || stored === 'dark'
+                        ? stored
+                        : matchMedia('(prefers-color-scheme: dark)').matches
+                          ? 'dark'
+                          : 'light';
+                document.documentElement.dataset.theme = theme;
+            } catch (e) {}
+        </script>
         <link rel="stylesheet" href="/src/styles/base.css" />
     </head>
     <body>
@@ -22,9 +34,7 @@
                     <li><a href="/library.html">Моя бібліотека</a></li>
                 </ul>
             </nav>
-            <button type="button" id="theme-toggle" aria-pressed="false">
-                Темна тема
-            </button>
+            <button type="button" id="theme-toggle">Темна тема</button>
         </header>
 
         <main id="main">

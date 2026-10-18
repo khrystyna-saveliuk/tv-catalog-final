@@ -18,6 +18,9 @@ import {
     isSortKey,
     sortShows,
 } from '../utils/filters';
+import { initThemeToggle } from '../components/themeToggle';
+
+initThemeToggle();
 
 interface PageState {
     visibleCount: number;

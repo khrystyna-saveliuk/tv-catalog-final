@@ -3,6 +3,9 @@ import type { SavedShow } from '../types/library';
 import { getElement } from '../utils/dom';
 import { listBy, listFavorites, loadLibrary } from '../utils/library';
 import { LIBRARY_PAGE_SIZE } from '../config';
+import { initThemeToggle } from '../components/themeToggle';
+
+initThemeToggle();
 
 function setupSection(id: string, items: SavedShow[], emptyText: string): void {
     const list = getElement<HTMLUListElement>(`${id}-list`);

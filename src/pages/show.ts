@@ -22,6 +22,9 @@ import {
 } from '../utils/library';
 import { htmlToParagraphs } from '../utils/text';
 import { parseShowId } from '../utils/url';
+import { initThemeToggle } from '../components/themeToggle';
+
+initThemeToggle();
 
 const CAST_PREVIEW = 6;
 

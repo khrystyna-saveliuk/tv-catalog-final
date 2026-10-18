@@ -1,0 +1,22 @@
+.library-intro {
+    max-width: 45rem;
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.library-page > section {
+    margin-top: var(--space-5);
+}
+
+.library-page h2 {
+    margin: 0;
+}
+
+.empty-state {
+    max-width: 40rem;
+    margin: var(--space-3) 0 0;
+    padding: var(--space-4);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-muted);
+}

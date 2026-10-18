@@ -33,15 +33,14 @@
 
         <main id="main">
             <h1>Моя бібліотека</h1>
-            <p>
+            <p class="library-intro">
                 Тут зібрані серіали, які ви додали зі сторінки серіалу. Списки
                 зберігаються лише в цьому браузері.
-                <a href="/">Знайти серіал</a>
             </p>
 
             <section aria-labelledby="favorites-title">
                 <h2 id="favorites-title">Улюблене</h2>
-                <p id="favorites-empty" hidden></p>
+                <p id="favorites-empty" class="empty-state" hidden></p>
                 <ul id="favorites-list" class="show-grid"></ul>
                 <button type="button" id="favorites-more" hidden>
                     Показати ще
@@ -50,14 +49,14 @@
 
             <section aria-labelledby="want-title">
                 <h2 id="want-title">Хочу подивитись</h2>
-                <p id="want-empty" hidden></p>
+                <p id="want-empty" class="empty-state" hidden></p>
                 <ul id="want-list" class="show-grid"></ul>
                 <button type="button" id="want-more" hidden>Показати ще</button>
             </section>
 
             <section aria-labelledby="watched-title">
                 <h2 id="watched-title">Переглянуто</h2>
-                <p id="watched-empty" hidden></p>
+                <p id="watched-empty" class="empty-state" hidden></p>
                 <ul id="watched-list" class="show-grid"></ul>
                 <button type="button" id="watched-more" hidden>
                     Показати ще

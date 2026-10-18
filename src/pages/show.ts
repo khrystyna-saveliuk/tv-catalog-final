@@ -1,6 +1,7 @@
 import { ApiError, getCast, getEpisodes, getShow } from '../api/tvmaze';
 import { createCastItem } from '../components/castItem';
 import { createEpisodeItem } from '../components/episodeItem';
+import { createIcon, type IconName } from '../components/icons';
 import { createMetaItems } from '../components/showMeta';
 import {
     clearStatus,
@@ -63,19 +64,46 @@ const LIST_NAMES: Record<ListKey, string> = {
     watched: 'Переглянуто',
 };
 
+function setActionButton(
+    button: HTMLButtonElement,
+    icon: IconName,
+    label: string,
+    active: boolean,
+): void {
+    button.replaceChildren(createIcon(icon), label);
+    button.dataset.active = String(active);
+}
+
 function renderLibraryControls(show: Show): void {
     const saved = findShow(library, show.id);
+    const isWant = saved?.want === true;
     const isWatched = saved?.watched === true;
+    const isFavorite = saved?.favorite === true;
 
-    wantButton.textContent = saved?.want
-        ? `Прибрати з «${LIST_NAMES.want}»`
-        : `Додати до «${LIST_NAMES.want}»`;
-    watchedButton.textContent = isWatched
-        ? `Прибрати з «${LIST_NAMES.watched}»`
-        : `Додати до «${LIST_NAMES.watched}»`;
-    favoriteButton.textContent = saved?.favorite
+    setActionButton(
+        wantButton,
+        isWant ? 'check' : 'plus',
+        isWant
+            ? `Прибрати з «${LIST_NAMES.want}»`
+            : `Додати до «${LIST_NAMES.want}»`,
+        isWant,
+    );
+    setActionButton(
+        watchedButton,
+        isWatched ? 'check' : 'plus',
+        isWatched
+            ? `Прибрати з «${LIST_NAMES.watched}»`
+            : `Додати до «${LIST_NAMES.watched}»`,
+        isWatched,
+    );
+
+    const favoriteLabel = isFavorite
         ? 'Прибрати з улюбленого'
         : 'Додати до улюбленого';
+    favoriteButton.replaceChildren(createIcon('heart', isFavorite));
+    favoriteButton.setAttribute('aria-label', favoriteLabel);
+    favoriteButton.title = favoriteLabel;
+    favoriteButton.dataset.active = String(isFavorite);
 
     favoriteButton.disabled = !isWatched;
     favoriteHint.hidden = isWatched;
@@ -108,7 +136,7 @@ function renderShow(show: Show): void {
     titleElement.textContent = show.name;
 
     if (show.image) {
-        poster.src = show.image.medium;
+        poster.src = show.image.original;
         poster.alt = `Постер серіалу ${show.name}`;
     } else {
         poster.hidden = true;

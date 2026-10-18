@@ -12,6 +12,11 @@ export function createCastItem(member: CastMember): HTMLLIElement {
         photo.height = 295;
         photo.loading = 'lazy';
         item.append(photo);
+    } else {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'poster-placeholder';
+        placeholder.setAttribute('aria-hidden', 'true');
+        item.append(placeholder);
     }
 
     const name = document.createElement('p');

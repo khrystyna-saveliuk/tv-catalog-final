@@ -18,6 +18,7 @@ export function createShowCard(
         poster.width = 210;
         poster.height = 295;
         poster.loading = eager ? 'eager' : 'lazy';
+        if (eager) poster.fetchPriority = 'high';
         link.append(poster);
     } else {
         const placeholder = document.createElement('div');

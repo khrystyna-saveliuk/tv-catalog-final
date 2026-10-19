@@ -1,6 +1,6 @@
 import { createShowCard } from '../components/showCard';
 import { initThemeToggle } from '../components/themeToggle';
-import { LIBRARY_PAGE_SIZE } from '../config';
+import { LIBRARY_EAGER_IMAGES, LIBRARY_PAGE_SIZE } from '../config';
 import type { SavedShow } from '../types/library';
 import { getElement } from '../utils/dom';
 import { listBy, listFavorites, loadLibrary } from '../utils/library';
@@ -15,7 +15,11 @@ function setupSection(id: string, items: SavedShow[], emptyText: string): void {
 
     function render(): void {
         list.replaceChildren(
-            ...items.slice(0, visibleCount).map((item) => createShowCard(item)),
+            ...items
+                .slice(0, visibleCount)
+                .map((item, index) =>
+                    createShowCard(item, index < LIBRARY_EAGER_IMAGES),
+                ),
         );
         empty.textContent = items.length === 0 ? emptyText : '';
         empty.hidden = items.length > 0;

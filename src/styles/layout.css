@@ -103,16 +103,6 @@ main,
     margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    @view-transition {
-        navigation: auto;
-    }
-}
-
-.site-header {
-    view-transition-name: site-header;
-}
-
 main > h1:first-child {
     margin: 0 0 var(--space-3);
 }

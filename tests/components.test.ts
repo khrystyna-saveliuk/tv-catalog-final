@@ -51,6 +51,16 @@ describe('createShowCard', () => {
         expect(card.querySelector('.poster-placeholder')).toBeNull();
     });
 
+    it('постер за замовчуванням завантажується ліниво', () => {
+        const card = createShowCard(makeCard());
+        expect(card.querySelector('img')?.loading).toBe('lazy');
+    });
+
+    it('постер завантажується одразу, якщо передано eager', () => {
+        const card = createShowCard(makeCard(), true);
+        expect(card.querySelector('img')?.loading).toBe('eager');
+    });
+
     it('показує заглушку, коли постера немає', () => {
         const card = createShowCard(makeCard({ image: null }));
         expect(card.querySelector('img')).toBeNull();

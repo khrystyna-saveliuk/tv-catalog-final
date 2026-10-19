@@ -8,7 +8,7 @@
 
 .show-hero {
     display: grid;
-    grid-template-columns: minmax(12rem, 18rem) 1fr;
+    grid-template-columns: minmax(12rem, 15rem) 1fr;
     gap: var(--space-5);
     align-items: start;
 }

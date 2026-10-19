@@ -15,7 +15,7 @@ function setupSection(id: string, items: SavedShow[], emptyText: string): void {
 
     function render(): void {
         list.replaceChildren(
-            ...items.slice(0, visibleCount).map(createShowCard),
+            ...items.slice(0, visibleCount).map((item) => createShowCard(item)),
         );
         empty.textContent = items.length === 0 ? emptyText : '';
         empty.hidden = items.length > 0;

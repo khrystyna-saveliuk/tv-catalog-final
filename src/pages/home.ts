@@ -13,7 +13,7 @@ import {
 import { createShowCard } from '../components/showCard';
 import { showError, showLoading, showMessage } from '../components/status';
 import { initThemeToggle } from '../components/themeToggle';
-import { HOME_PAGE_SIZE } from '../config';
+import { EAGER_IMAGES, HOME_PAGE_SIZE } from '../config';
 import type { Show } from '../types/tvmaze';
 import { getElement } from '../utils/dom';
 import {
@@ -117,7 +117,11 @@ function renderList(): void {
     const sorted = sortShows(filtered, sortKey);
     const visible = sorted.slice(0, visibleCount);
 
-    listElement.replaceChildren(...visible.map(createShowCard));
+    listElement.replaceChildren(
+        ...visible.map((show, index) =>
+            createShowCard(show, index < EAGER_IMAGES),
+        ),
+    );
     moreButton.hidden = visible.length >= sorted.length;
 
     if (sorted.length === 0) {

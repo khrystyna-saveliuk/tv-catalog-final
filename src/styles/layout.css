@@ -106,3 +106,6 @@ main,
 main > h1:first-child {
     margin: 0 0 var(--space-3);
 }
+main:has(.status-loading) ~ .site-footer {
+    visibility: hidden;
+}

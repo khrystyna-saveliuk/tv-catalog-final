@@ -174,3 +174,17 @@
         transition: none;
     }
 }
+@media (max-width: 52rem) {
+    .filters__sort {
+        flex: 1 1 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-1);
+        margin-inline-start: 0;
+        order: 1;
+    }
+
+    .filters__sort select {
+        width: 100%;
+    }
+}

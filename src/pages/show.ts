@@ -52,7 +52,7 @@ function renderShow(show: Show): void {
     titleElement.textContent = show.name;
 
     if (show.image) {
-        poster.src = show.image.original;
+        poster.src = show.image.medium;
         poster.alt = `Постер серіалу ${show.name}`;
     } else {
         poster.hidden = true;

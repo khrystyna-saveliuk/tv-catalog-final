@@ -1,7 +1,10 @@
 import type { ShowCardData } from '../types/tvmaze';
 import { createIcon } from './icons';
 
-export function createShowCard(show: ShowCardData): HTMLLIElement {
+export function createShowCard(
+    show: ShowCardData,
+    eager = false,
+): HTMLLIElement {
     const item = document.createElement('li');
     item.className = 'show-card';
 
@@ -14,7 +17,7 @@ export function createShowCard(show: ShowCardData): HTMLLIElement {
         poster.alt = '';
         poster.width = 210;
         poster.height = 295;
-        poster.loading = 'lazy';
+        poster.loading = eager ? 'eager' : 'lazy';
         link.append(poster);
     } else {
         const placeholder = document.createElement('div');
